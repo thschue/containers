@@ -8,6 +8,6 @@ RUN wget -q https://get.helm.sh/helm-${HELM_VERSION}-linux-amd64.tar.gz -O - \
 RUN curl -sfL "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" -o /bin/kubectl \
     && chmod +x /bin/kubectl
 
-FROM scratch
+FROM alpine
 COPY --from=builder /bin/helm /helm
 COPY --from=builder /bin/kubectl /kubectl
